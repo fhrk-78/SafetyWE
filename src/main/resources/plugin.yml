@@ -6,6 +6,6 @@ authors: [ pizzaharumaki ]
 website: https://github.com/fhrk-78
 
 permissions:
-  SafetyWorldEdit.skipSafetyCheck:
+  safetyWorldEdit.skipSafetyCheck:
     default: false
     description: Skip WorldEdit safety check

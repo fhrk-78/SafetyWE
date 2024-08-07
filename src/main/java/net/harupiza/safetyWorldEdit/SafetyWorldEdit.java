@@ -24,7 +24,7 @@ import java.util.Map;
 public final class SafetyWorldEdit extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @EventHandler
@@ -35,7 +35,7 @@ public final class SafetyWorldEdit extends JavaPlugin implements Listener {
             org.bukkit.entity.Player player = event.getPlayer();
 
             // スキップ権限があればチェックをスキップする
-            if (player.hasPermission("SafetyWorldEdit.skipSafetyCheck")) return;
+            if (player.hasPermission("safetyWorldEdit.skipSafetyCheck")) return;
 
             // WorldEdit選択範囲を取得
             Player actor = BukkitAdapter.adapt(player);
@@ -64,7 +64,7 @@ public final class SafetyWorldEdit extends JavaPlugin implements Listener {
                             if (!(protectedRegion.getValue().isOwner(WorldGuardPlugin.inst().wrapPlayer(player))
                                     || protectedRegion.getValue().isMember(WorldGuardPlugin.inst().wrapPlayer(player)))) {
                                 // オーナーでもメンバーでもなければキャンセル
-                                player.sendMessage("Guard内に侵入しています。操作を中断します。");
+                                player.sendMessage("[!] 他人のGuard内に侵入しています。操作を中断します。");
                                 event.setCancelled(true);
                                 return;
                             }
