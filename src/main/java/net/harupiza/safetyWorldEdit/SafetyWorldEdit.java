@@ -19,11 +19,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
 import java.util.Map;
 
 public final class SafetyWorldEdit extends JavaPlugin implements Listener {
+    private List<String> target;
+
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+        target = getConfig().getStringList("targetList");
+
         getServer().getPluginManager().registerEvents(this, this);
     }
 
@@ -31,7 +37,7 @@ public final class SafetyWorldEdit extends JavaPlugin implements Listener {
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         String command = event.getMessage();
 
-        if (command.startsWith("//")) {
+        if (target.contains(command.split(" ")[0])) {
             org.bukkit.entity.Player player = event.getPlayer();
 
             // スキップ権限があればチェックをスキップする
