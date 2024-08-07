@@ -1,0 +1,11 @@
+name: SafetyWorldEdit
+version: '1.0'
+main: net.harupiza.safetyWorldEdit.SafetyWorldEdit
+api-version: '1.20'
+authors: [ pizzaharumaki ]
+website: https://github.com/fhrk-78
+
+permissions:
+  SafetyWorldEdit.skipSafetyCheck:
+    default: false
+    description: Skip WorldEdit safety check
