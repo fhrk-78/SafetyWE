@@ -1,5 +1,5 @@
 name: SafetyWorldEdit
-version: '1.0'
+version: '1.1'
 main: net.harupiza.safetyWorldEdit.SafetyWorldEdit
 api-version: '1.20'
 authors: [ pizzaharumaki ]
